@@ -1,0 +1,31 @@
+services:
+  web:
+    build: .
+    container_name: django-app
+    restart: unless-stopped
+    ports:
+      - "8000:5005"
+    environment:
+      DEBUG: "False"
+      SECRET_KEY: "change-me"
+      DB_ENGINE: postgresql
+      DB_HOST: db
+      DB_NAME: django_db
+      DB_USERNAME: postgres
+      DB_PASS: postgres
+      DB_PORT: 5432
+    depends_on:
+      - db
+  db:
+    image: postgres:17
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: django_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
