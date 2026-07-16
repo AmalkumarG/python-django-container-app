@@ -40,7 +40,7 @@ jobs:
       run: |
         cd k8-aws-ec2-cluster
 
-        sed -i "s|image:.*|image: $IMAGE_NAME:${{ github.sha }}|" deployment.yml
+        sed -i "s|image:.*|image: $IMAGE_NAME:${{ github.sha }}|" python-deployment.yml
 
     - name: Commit Changes
       run: |
