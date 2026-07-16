@@ -34,7 +34,7 @@ jobs:
 
     - name: Clone Manifest Repo
       run: |
-        git clone https://x-access-token:${{ secrets.MANIFEST_REPO_PAT }}@github.com/AmalkumarG/k8-aws-ec2-cluster.git
+        git clone https://x-access-token:${{ secrets.MANIFEST_REPO_TOKEN }}@github.com/AmalkumarG/k8-aws-ec2-cluster.git
 
     - name: Update Deployment Image
       run: |
@@ -52,5 +52,5 @@ jobs:
         git add python-deployment.yml
 
         git commit -m "Update image to ${{ github.sha }}" || echo "No changes"
-        git remote set-url origin https://x-access-token:${{ secrets.MANIFEST_REPO_PAT }}@github.com/AmalkumarG/k8-aws-ec2-cluster.git
+        git remote set-url origin https://x-access-token:${{ secrets.MANIFEST_REPO_TOKEN }}@github.com/AmalkumarG/k8-aws-ec2-cluster.git
         git push
